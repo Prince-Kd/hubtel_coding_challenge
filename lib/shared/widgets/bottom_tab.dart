@@ -39,6 +39,7 @@ class _BottomTabState extends State<BottomTab> {
     return Scaffold(
       body: tabs[currentIndex]['screen'],
       bottomNavigationBar: BottomNavigationBar(
+        elevation: 5,
         backgroundColor: Colors.white,
         currentIndex: currentIndex,
         selectedLabelStyle: TextStyle(color: Colors.black, fontWeight: FontWeight.w600, ),

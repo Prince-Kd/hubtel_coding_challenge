@@ -48,7 +48,7 @@ class HistoryView extends StatelessWidget {
               Divider(thickness: 2, color: Colors.grey[300],),
               Expanded(
                 child: Padding(
-                  padding: const EdgeInsets.all(20.0),
+                  padding: const EdgeInsets.only(top: 20.0, left: 20, right: 20),
                   child: Column(
                     children: [
                       Row(
@@ -84,7 +84,8 @@ class HistoryView extends StatelessWidget {
                     ],
                   ),
                 ),
-              )
+              ),
+
             ],
           ),
         ),
@@ -92,7 +93,7 @@ class HistoryView extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
             SizedBox(
-              height: 50,
+              height: 60,
               child: ElevatedButton(
                 style: ElevatedButton.styleFrom(
                   elevation: 5,

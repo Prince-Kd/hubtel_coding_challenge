@@ -19,7 +19,7 @@ class HistoryTab extends StatelessWidget {
         liked: true,
         type: "Personal",
       ),
-       HistoryModel(
+      HistoryModel(
         createdAt: DateTime.now().toIso8601String(),
         bankImage: "assets/images/mtn.png",
         userName: 'Absa Bank',
@@ -30,7 +30,7 @@ class HistoryTab extends StatelessWidget {
         liked: false,
         type: "Personal",
       ),
-       HistoryModel(
+      HistoryModel(
         createdAt: DateTime.now().subtract(Duration(days: 1)).toIso8601String(),
         bankImage: "assets/images/mtn.png",
         userName: 'Emmanuel Rockson',
@@ -41,7 +41,7 @@ class HistoryTab extends StatelessWidget {
         liked: true,
         type: "Other",
       ),
-       HistoryModel(
+      HistoryModel(
         createdAt: DateTime.now().subtract(Duration(days: 1)).toIso8601String(),
         bankImage: "assets/images/mtn.png",
         userName: 'Emmanuel Rockson',
@@ -53,21 +53,33 @@ class HistoryTab extends StatelessWidget {
       ),
     ];
     return ListView.separated(
-        itemBuilder: (context, index) {
-          bool showDate(){
-            if(index == 0){
-              return true;
-            }else if(DateTime.parse(dummyData[index - 1].createdAt).day == DateTime.parse(dummyData[index].createdAt).day){
-              return false;
-            }else{
-              return true;
-            }
+      itemBuilder: (context, index) {
+        bool showDate() {
+          if (index == 0) {
+            return true;
+          } else if (DateTime.parse(dummyData[index - 1].createdAt).day ==
+              DateTime.parse(dummyData[index].createdAt).day) {
+            return false;
+          } else {
+            return true;
           }
-          return HistoryCard(historyData: dummyData[index], showDate: showDate(),);
-        },
-        separatorBuilder: (context, index) => const SizedBox(
-              height: 20,
+        }
+
+        return Column(
+          children: [
+            HistoryCard(
+              historyData: dummyData[index],
+              showDate: showDate(),
             ),
-        itemCount: dummyData.length);
+            if (index+1 == dummyData.length)
+              const SizedBox(
+                height: 80,
+              ),
+          ],
+        );
+      },
+      separatorBuilder: (context, index) => const SizedBox(height: 20),
+      itemCount: dummyData.length,
+    );
   }
 }
